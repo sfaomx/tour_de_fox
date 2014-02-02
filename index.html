@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>A MapBox Map</title>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <script src='//api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.js'></script>
+    <link href='//api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.css' rel='stylesheet' />
+
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+        .mapbox-info-toggle {
+            display:none;
+        }
+
+        .leaflet-popup-content{
+            width: 350px !important;
+        }
+
+        .viewClimbLink {
+            background-color: #ff472f;
+            padding:1em 4em 1em 1em;
+            display: inline-block;
+            color:#FFF !important;
+            font-size: 14px;
+            text-transform: uppercase;
+            position: relative;
+            border:0;
+        }
+        .marker_description {
+            line-height: 1.3em !important;
+            margin-bottom:0.2em !important;
+        }
+        .viewClimbLink {
+            padding:0.5em !important;
+        }
+
+.viewClimbLink:hover {
+    text-decoration: none;
+    background-color: #fea634;
+    color:#FFF;
+}
+
+    .leaflet-container img {
+        margin: 0 auto;
+        displaY: block;
+    }
+
+    </style>
+</head>
+<body>
+    <div id='map'></div>
+
+    <script>
+  // Visit https://www.mapbox.com/mapbox.js/overview/ for documentation and examples
+    var geojson = [
+    
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-68.922118, 45.904452 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Katahdin</span><br>State: Maine<br> Elevation: 5,269ft<br>Climb Date: May 22, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1022&fr_id=1440&pg=company’>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/MEpic2.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+ {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-71.304392, 44.270652 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Washington</span><br>Elevation: 6,288ft<br>Climb Date: May 24, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1023&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NHpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+ {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-72.814497, 44.543646 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Mansfield</span><br>Elevation: 4,393ft<br>Climb Date: May 26, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1024&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/VTpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+ {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.923301, 44.112767  ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Marcy</span><br>Elevation: 5,344ft<br>Climb Date: May 27, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1070&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NYpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+ {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.166086, 42.637205 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Greylock</span><br>Elevation: 3,491ft<br>Climb Date: May 28, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1025&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/MApic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+ {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-71.779073, 41.849290 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Jerimoth Hill</span><br>Elevation: 812ft<br>Climb Date: May 29, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1026&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/RIpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+ {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.482434, 42.049728 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Frissell</span><br>Elevation: 2,379ft<br>Climb Date: May 30, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1027&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/ctpic12203.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-74.661474, 41.321051 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>High Point</span><br>Elevation: 1,804ft<br>Climb Date: May 31, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1080&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NJpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.519008, 39.835874 ]
+      },
+     "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Ebright Azimuth</span><br>Elevation: 448ft<br>Climb Date: June 1, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1029&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/DEpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.175955, 39.786196 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Davis</span><br>Elevation: 3,213ft<br>Climb Date: June 3, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1030&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/PApic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.485271, 39.237510 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Backbone Mountain</span><br>Elevation: 3,360ft<br>Climb Date: June 3, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1031&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/MDpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.532577, 38.700149 ]
+      },
+      "properties": {
+       "description":"<div style='float:left;'><span style='font-weight:bold;'>Spruce Knob</span><br>Elevation: 4,863ft<br>Climb Date: June 4, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1032&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/WVpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-83.720203, 40.370067 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Campbell Hill</span><br>Elevation: 1,550ft<br>Climb Date: June 6, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1033&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/ohpic12223.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.851140, 40.000558 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Hoosier Hill</span><br>Elevation: 1,257ft<br>Climb Date: June 7, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1034&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/INpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-82.893997, 36.914346 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Black Mountain</span><br>Elevation: 4,145ft<br>Climb Date: June 9, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1035&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/KYpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-81.544685, 36.659918 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Rogers</span><br>Elevation: 5,279ft<br>Climb Date: June 10, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1036&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/VApic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-82.265000, 35.764958 ]
+      },
+     "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Mitchell</span><br>Elevation: 6,683ft<br>Climb Date: June 11, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1037&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NCpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-82.777012, 35.064973 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Sassafras Mountain</span><br>Elevation: 3,563ft<br>Climb Date: June 11, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1038&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/SCpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-83.498398, 35.562754 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Clingman’s Dome</span><br>Elevation: 6,644ft<br>Climb Date: June 12, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1039&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/TNpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-83.810816, 34.874253 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Brasstown Bald</span><br>Elevation: 4,783ft<br>Climb Date: June 13, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1040&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/GApic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.808837, 33.485595 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Cheaha Mountain</span><br>Elevation: 2,407ft<br>Climb Date: June 15, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1020&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/ALpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.241718, 34.787894 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Woodall Mountain</span><br>Elevation: 807ft<br>Climb Date: June 17, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1041&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/mspic12248.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.282016, 30.988731 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Britton Hill</span><br>Elevation: 345ft<br>Climb Date: June 18, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1042&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/FLpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-92.897666, 32.424284 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Driskill Mountain</span><br>Elevation: 535ft<br>Climb Date: June 21, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1043&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/LApic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.645852, 35.166835 ]
+      },
+     "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Magazine</span><br>Elevation: 2,753ft<br>Climb Date: June 22, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1044&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/ARpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-90.727040, 37.571066 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Taum Sauk Mountain</span><br>Elevation: 1,772ft<br>Climb Date: June 23, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1045&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/MOpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-90.194256, 45.450956 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Timms Hill</span><br>Elevation: 1,951ft<br>Climb Date: June 28, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1047&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/WIpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-88.156078, 46.756923 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Arvon</span><br>Elevation: 1,979ft<br>Climb Date: June 29, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1048&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/MIpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-90.560394, 47.897673 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Eagle Mountain</span><br>Elevation: 2,301ft<br>Climb Date: July 1, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1049&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/MNpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-95.709098, 43.460249 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Hawkeye Point</span><br>Elevation: 1,670ft<br>Climb Date: July 4, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1050&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/IApic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.301547, 46.386824 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>White Butte</span><br>Elevation: 3,506ft<br>Climb Date: July 5, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1051&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NDpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.533179, 43.866006 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Harney Peak</span><br>Elevation: 7,244ft<br>Climb Date: July 7, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1052&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/SDpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-109.654171, 43.184568 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Gannett Peak</span><br>Elevation: 13,809ft<br>Climb Date: July 9, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1053&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/WYpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-109.807797, 45.163349 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Granite Peak</span><br>Elevation: 12,807ft<br>Climb Date: July 13, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1054&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/MTpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-113.780181, 44.136794 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Borah Peak</span><br>Elevation: 12,667ft<br>Climb Date: July 16, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1055&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/IDpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-110.372670, 40.776441 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>King’s Peak</span><br>Elevation: 13,527ft<br>Climb Date: July 18, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1056&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/UTpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-106.445227, 39.117784 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Elbert</span><br>Elevation: 14,440ft<br>Climb Date: July 21, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1057&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/COpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-104.031022, 41.007115 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Panorama Point</span><br>Elevation: 5,429ft<br>Climb Date: July 23, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1058&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NEpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-102.037200, 39.021949 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Sunflower</span><br>Elevation: 4,039ft<br>Climb Date: July 24, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1059&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/KSpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-102.997871, 36.931840 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Black Mesa</span><br>Elevation: 4,973ft<br>Climb Date: July 26, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1060&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/OKpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.416869, 36.556848 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Wheeler Peak</span><br>Elevation: 13,167ft<br>Climb Date: July 28, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1061&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NMpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-104.860613, 31.891325 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Guadalupe Peak</span><br>Elevation: 8,750ft<br>Climb Date: July 30, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1062&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/TXpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.678455, 35.346358 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Humphrey’s Peak</span><br>Elevation: 12,635ft<br>Climb Date: August 1, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1021&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/AZpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.292312, 36.578496 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Whitney</span><br>Elevation: 14,496ft<br>Climb Date: August 7, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1063&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/CApic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.351470, 37.846056 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Boundary Peak</span><br>Elevation: 13,146ft<br>Climb Date: August 9, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1064&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NVpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.695508, 45.373307 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Hood</span><br>Elevation: 11,250ft<br>Climb Date: August 16, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1065&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/ORpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.759109, 46.853854 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Mt. Rainier</span><br>Elevation: 14,410ft<br>Climb Date: August 20, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1066&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/WApic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+ 
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-123.083219, 49.379560 ]
+      },
+      "properties": {
+        "description":"<div style='float:left;'><span style='font-weight:bold;'>Grouse Grind</span><br>Elevation: 3,614ft<br>Climb Date: August 23, 2014<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1010&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/CANpic.jpg' width='290'' /> ",
+        "icon": {
+            "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    }
+
+    // ,
+    //     {
+    //   "type": "Feature",
+    //   "geometry": {
+    //     "type": "Point",
+    //     "coordinates": [-77.03238901390978,38.913188059745586]
+    //   },
+    //   "properties": {
+    //     // "title": "Mount Washington",
+    //     "description":"<div style='float:left;'><span style='font-weight:bold;'>Mount Washington</span><br>Elevation: 3,450ft<br>Date: 3/13/14<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1070&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NYpic.jpg' width='290'' /> ",
+    //     "icon": {
+    //         "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+    //         "iconSize": [50, 50], // size of the icon
+    //         "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+    //         "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+    //         "className": "dot"
+    //     }
+    //   }
+    // },
+    //     {
+    //   "type": "Feature",
+    //   "geometry": {
+    //     "type": "Point",
+    //     "coordinates": [-77.03238901390978,38.913188059745586]
+    //   },
+    //   "properties": {
+    //     // "title": "Mount Washington",
+    //     "description":"<div style='float:left;'><span style='font-weight:bold;'>Mount Washington</span><br>Elevation: 3,450ft<br>Date: 3/13/14<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1070&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NYpic.jpg' width='290'' /> ",
+    //     "icon": {
+    //         "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+    //         "iconSize": [50, 50], // size of the icon
+    //         "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+    //         "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+    //         "className": "dot"
+    //     }
+    //   }
+    // },
+    //     {
+    //   "type": "Feature",
+    //   "geometry": {
+    //     "type": "Point",
+    //     "coordinates": [-77.03238901390978,38.913188059745586]
+    //   },
+    //   "properties": {
+    //     // "title": "Mount Washington",
+    //     "description":"<div style='float:left;'><span style='font-weight:bold;'>Mount Washington</span><br>Elevation: 3,450ft<br>Date: 3/13/14<br></div><div style='float:right;'><a class='viewClimbLink' href='http://www2.michaeljfox.org/site/TR?company_id=1070&fr_id=1440&pg=company'>Climb With Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/NYpic.jpg' width='290'' /> ",
+    //     "icon": {
+    //         "iconUrl": "http://50.57.35.97/files/MapMarker_Mountain.png",
+    //         "iconSize": [50, 50], // size of the icon
+    //         "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+    //         "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+    //         "className": "dot"
+    //     }
+    //   }
+    // }
+  ];
+
+
+  var map = L.mapbox.map('map', 'sfaomx09.gf0nl86l',  {
+    shareControl: true,
+    // SETTING ZOOM LEVELS
+    maxZoom:11,
+    minZoom:4
+})
+    .setView([43.329, -71.411], 7)
+    // .minZoom(4)
+
+    .addControl(L.mapbox.geocoderControl('sfaomx09.gf0nl86l'));
+
+
+map.markerLayer.on('layeradd', function(e) {
+    var marker = e.layer,
+        feature = marker.feature;
+
+    marker.setIcon(L.icon(feature.properties.icon));
+});
+L.control.scale().addTo(map);
+// map.markerLayer.on('mouseover', function(e) {
+//     e.layer.openPopup();
+// });
+// map.markerLayer.on('mouseout', function(e) {
+//     e.layer.closePopup();
+// });
+
+map.on('ready', function() {
+    map.fitBounds(map.markerLayer.getBounds());
+});
+map.markerLayer.setGeoJSON(geojson)
+
+// ADDED SCALE TO MAP
+// map.on('zoomend', function() {
+//     // here's where you decided what zoom levels the layer should and should
+//     // not be available for: use javascript comparisons like < and > if
+//     // you want something other than just one zoom level, like
+//     // (map.getZoom > 10)
+//     if (map.getZoom() <= 6) {
+
+//         // setFilter is available on L.mapbox.markerLayers only. Here
+//         // we're hiding and showing the default marker layer that's attached
+//         // to the map - change the reference if you want to hide or show a
+//         // different markerLayer.
+//         // If you want to hide or show a different kind of layer, you can use
+//         // similar methods like .setOpacity(0) and .setOpacity(1)
+//         // to hide or show it.
+//         map.markerLayer.setFilter(function() { return true; });
+//     } else {
+//         map.markerLayer.setFilter(function() { return false; });
+//     }
+// });
+
+// SETTING THE MAP TO LOAD WITH ALL MARKERS VISIBLE
+
+
+
+
+
+</script></body>
+</html>
