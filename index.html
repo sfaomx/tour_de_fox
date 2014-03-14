@@ -973,6 +973,42 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
+        "coordinates": [-122.271698, 37.532974 ]
+      },
+      "properties": {
+        "description":"<div><div style='float:left;'><span style='font-weight:bold;'>Event (WA)</span><br>Elevation: 14,410ft<br>Date: August 20-21, 2014<br></div><div style='float:right;'><a class='viewClimbLink' target='_blank' href='http://www2.michaeljfox.org/site/TR?company_id=1066&fr_id=1440&pg=company'>Join Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/WApic.jpg' width='240' /> </div>",
+        "icon": {
+            "iconUrl": "http://www2.michaeljfox.org/images/content/pagebuilder/party_icon.png",
+            "iconSize": [7, 10], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [-12, -23], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-68.709027, 45.654107 ]
+      },
+      "properties": {
+        "description":"<div><div style='float:left;'><span style='font-weight:bold;'>Event (WA)</span><br>Elevation: 14,410ft<br>Date: August 20-21, 2014<br></div><div style='float:right;'><a class='viewClimbLink' target='_blank' href='http://www2.michaeljfox.org/site/TR?company_id=1066&fr_id=1440&pg=company'>Join Sam</a></div><div style='clear:both;'></div><img src='http://www2.michaeljfox.org/images/content/pagebuilder/WApic.jpg' width='240' /> </div>",
+        "icon": {
+            "iconUrl": "http://www2.michaeljfox.org/images/content/pagebuilder/party_icon.png",
+            "iconSize": [7, 10], // size of the icon
+            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+            "popupAnchor": [-12, -23], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+      }
+    },
+
+{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
         "coordinates": [-123.083219, 49.379560 ]
       },
       "properties": {
@@ -1019,7 +1055,7 @@ map.on('ready', function() {
     map.fitBounds(map.markerLayer.getBounds());
 });
 map.markerLayer.setGeoJSON(geojson)
-
+ // Go up to 7 at that levels.
 // ADDED SCALE TO MAP
 // map.on('zoomend', function() {
 //     // here's where you decided what zoom levels the layer should and should
