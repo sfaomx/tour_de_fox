@@ -1365,10 +1365,10 @@ map.on('zoomend', function() {
         // If you want to hide or show a different kind of layer, you can use
         // similar methods like .setOpacity(0) and .setOpacity(1)
         // to hide or show it.
-      map.markerLayer.setFilter(function() { return true; });
+      // map.markerLayer.setFilter(function() { return true; });
       // marker.setIcon(L.icon(feature.properties.icon));
     } else {
-        map.markerLayer.setFilter(function() { return false; });
+        // map.markerLayer.setFilter(function() { return false; });
         //marker.setIcon(L.icon(feature.properties.icon2));
     }
 });
