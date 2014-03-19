@@ -8,6 +8,7 @@
     <script src='//api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
     <link href='//api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
     <script src="js/celebrations_1.js"></script>
+    <script src="js/celebrations_2.js"></script>
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -82,7 +83,7 @@ map.on('zoomend', function() {
     // you want something other than just one zoom level, like
     // (map.getZoom > 10)
     if (map.getZoom() <= 4) {
-
+      map.markerLayer.setGeoJSON(geojson)
         // setFilter is available on L.mapbox.markerLayers only. Here
         // we're hiding and showing the default marker layer that's attached
         // to the map - change the reference if you want to hide or show a
@@ -93,6 +94,7 @@ map.on('zoomend', function() {
       // map.markerLayer.setFilter(function() { return true; });
       // marker.setIcon(L.icon(feature.properties.icon));
     } else {
+      map.markerLayer.setGeoJSON(geojson2)
         // map.markerLayer.setFilter(function() { return false; });
         //marker.setIcon(L.icon(feature.properties.icon2));
     }
